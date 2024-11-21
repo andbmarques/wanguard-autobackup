@@ -13,6 +13,17 @@ const date = moment().format("YYYY_M_D_hh_mm");
 // Define o nome do arquivo de backup de acordo com a data.
 const file = `wanguard_db_backup_${date}.sql`;
 
+// Reinicia o banco de dados
+console.log(`[ ${moment().format("D/M/YYYY | H:mm")} ] Reiniciando o DB...`);
+execSync(
+  "systemctl restart mysql",
+  (error, stdout, stderr) => {
+    // Checa se houve algum erro no comando e informa via log.
+    if (error) console.log(error.message);
+    if (stderr) console.log(stderr);
+  }
+);
+
 // Executa o comando bash (de forma sincrona, para que a função de enviar para o ftp não execute antes) para gerar o arquivo de backup.
 console.log(`[ ${moment().format("D/M/YYYY | H:mm")} ] Gerando arquivo de backup...`);
 execSync(
