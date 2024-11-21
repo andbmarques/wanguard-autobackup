@@ -8,7 +8,7 @@ import { Client } from "basic-ftp";
 import { existsSync, unlink } from "fs";
 
 // Define a data e a hora da execução (!!!Importante para localizar o arquivo de backup).
-const date = moment().format("YYYY_M_D_H_mm");
+const date = moment().format("YYYY_M_D_hh_mm");
 
 // Define o nome do arquivo de backup de acordo com a data.
 const file = `wanguard_db_backup_${date}.sql`;
